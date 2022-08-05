@@ -1,0 +1,252 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Digital7';
+  src: url(./digital-7.italic.ttf);
+}
+
+:root {
+  font-size: 50%;
+
+  --bg: #FFF;
+  --fc: #323238;
+  --bg-btn-song: #E1E1E6;
+  --hover-color: #02799D;
+}
+
+body {
+  background-color: var(--bg);
+  font-family: 'Roboto', sans-serif;
+  color: var(--fc);
+  display: grid;
+  min-height: 100vh;
+}
+
+main {
+  margin: auto;
+  width: 32rem;
+}
+
+.timers {
+  position: relative;
+}
+
+.timers label {
+  position: absolute;
+  padding: 1rem;
+  top: -6rem;
+  color: #FFF;
+  background-color: var(--hover-color);
+  font-size: 1.2rem;
+  border-radius: 1rem;
+}
+
+.timers label:after{
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid var(--hover-color);
+  bottom: -10px;
+  left: 20%;
+}
+
+.timers .startTime {
+  font-size: 1.5rem;
+}
+
+.timers .startTime strong {
+  color: #02799D;
+  margin-left: .5rem;
+}
+
+.timers .inputsTime {
+  display: flex;
+  cursor: pointer;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.timers .inputsTime span {
+  font-family: 'Digital7';
+  font-size: 12.6rem;
+}
+
+.timers .inputsTime input {
+  background-color: transparent;
+  color: var(--fc);
+  font-family: 'Digital7';
+  font-size: 12.6rem;
+  letter-spacing: 2rem;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.timers .inputsTime input:nth-child(2) {
+  text-align: end;
+}
+
+.timers .inputsTime input:disabled {
+  color: var(--fc);
+  background-color: transparent;
+  cursor: default;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.timers .buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.timers .buttons svg {
+  cursor: pointer;
+}
+
+.timers .buttons svg path{
+  fill: var(--fc);
+}
+
+.timers .buttons svg:hover path{
+  fill: var(--hover-color);
+}
+
+.timers .buttons .desabled {
+  cursor: default;
+  opacity: 0.6;
+}
+.timers .buttons .desabled:hover path {
+  fill: var(--fc);
+}
+
+.songs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.2rem;
+  margin-top: 5rem;
+}
+
+.songs div {
+  position: relative;
+}
+
+.songs div svg {
+  cursor: pointer;
+  width: 100%;
+}
+
+.songs div:hover svg path:nth-child(1) {
+  fill: var(--hover-color);
+}
+
+.songs div:hover svg path:nth-child(2) {
+  fill: #FFF;
+}
+
+.pathOneColor {
+  fill: var(--bg-btn-song);
+}
+
+.pathTwoColor {
+  fill: var(--fc);
+}
+
+.pathOneColorHover {
+  fill: var(--hover-color);
+}
+
+.pathTwoColorHover {
+  fill: #FFF;
+}
+
+.songs div input[type="range"] {
+  -webkit-appearance: none;
+  background: var(--fc);
+  border-radius: 5px;
+  height: 4px;
+  position: absolute;
+  bottom: 1.5rem;
+  left: 15%;
+  width: 70%;
+}
+.songs div:hover input[type="range"] {
+  background: #FFF;
+}
+
+.songs div input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--fc);
+  cursor: ew-resize;
+}
+.songs div:hover input[type="range"]::-webkit-slider-thumb {
+  background: #FFF;
+}
+
+.hide {
+  display: none;
+}
+
+.shake {
+  animation: shake 0.1s infinite;
+}
+
+.btnThemeMode {
+  position: absolute;
+  right: 3rem;
+  top: 3rem;
+  cursor: pointer;
+}
+
+@media(min-width: 600px) {
+  :root {
+    font-size: 62.5%;
+  }
+}
+
+@media(min-width: 700px) {
+  :root {
+    font-size: 75%;
+  }
+}
+
+@media(min-width: 900px) {
+
+  main {
+    /* width: clamp(72rem, 72rem + 10vw, 90rem); */
+    width: min(85rem, calc(75% + 7.2rem));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .timers {
+    width: 32rem;
+  }
+
+  .songs {
+    width: 32rem;
+  }
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg);}
+  25% { transform: translate(-1px, -2px) rotate(-1deg);}
+  50% { transform: translate(-2px, -2px) rotate(1deg);}
+  75% { transform: translate(1px, 1px) rotate(0deg);}
+  100% { transform: translate(-2px, 1px) rotate(-1deg);}
+}
